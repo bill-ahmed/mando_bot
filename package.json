@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly index.ts",
+    "prod": "tsc && node ./build/index.js"
   },
   "author": "Bilal Ahmed",
   "license": "ISC",
   "dependencies": {
     "@slack/bolt": "^1.5.0",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.4"
   }
 }
