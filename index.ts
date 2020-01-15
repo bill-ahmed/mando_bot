@@ -13,6 +13,13 @@ app.error((err: any) => {
 });
 
 /* Add functionality here */
+app.message('test', async ({ message, say }: any) => {
+  console.log(message);
+  say(`Hello, <@${message.user}>`);
+});
+
+
+
 
 (async () => {
   // Start the app

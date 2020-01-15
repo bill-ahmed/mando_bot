@@ -106,3 +106,4 @@ dist
 # ignore config files
 config.json
 build/config.json
+build
