@@ -1,6 +1,7 @@
 const { App } = require('@slack/bolt');
 
-const config = require('./config.json');
+const PORT = 3500;                        // Use port 2500
+const config = require('./config.json');  // Load config info
 
 const app = new App({
   signingSecret: config.slack.signing_secret,
@@ -15,7 +16,7 @@ app.error((err: any) => {
 
 (async () => {
   // Start the app
-  await app.start(process.env.PORT || 3000);
+  await app.start(PORT);
 
-  console.log('⚡️ Bolt app is running!');
+  console.log(`⚡️  Bolt app is running on: http://localhost:${PORT} ⚡️`);
 })();
