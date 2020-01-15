@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
-    "prod": "tsc && node ./build/index.js"
+    "prod": "tsc && cp config.json ./build && node ./build/index.js"
   },
   "author": "Bilal Ahmed",
   "license": "ISC",
