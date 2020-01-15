@@ -7,6 +7,10 @@ const app = new App({
   token: config.slack.bot_token,
 });
 
+app.error((err: any) => {
+  console.error(err);
+});
+
 /* Add functionality here */
 
 (async () => {
