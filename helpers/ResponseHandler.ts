@@ -43,7 +43,7 @@ export default class ResponseHandler {
             json: true,
             body: body,
             headers: headers
-        }, (error, resp, body) => {
+        }, (error: any, resp: any, body: any) => {
             error ? console.error(error) : console.log(resp.body);
         });
     }
