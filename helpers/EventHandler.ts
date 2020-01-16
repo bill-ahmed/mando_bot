@@ -9,14 +9,15 @@ export default class EventHandler {
     }
 
     public appMention(req: any, res: any): void{
-        var rawMessage = req.body.event.text as string;
-        var channel = req.body.event.channel as string;
+        var rawMessage = req.body.event.text    as string;
+        var sender = req.body.event.user        as string;
+        var channel = req.body.event.channel    as string;
 
         // Only consider messages that mention the bot in the beginning, empty string if not so
         var message = this.getMessage(rawMessage);
         
         // Build response based on message
-        var response = this.rh.getResponseByMessage(message);
+        var response = this.rh.getResponseByMessage(message, sender);
         this.rh.sendChatResponse(response, channel);
 
     }
@@ -41,7 +42,7 @@ export default class EventHandler {
         var botMention = this.getBotTag();
 
         if(rawMessage.startsWith(botMention)){
-            return rawMessage.replace(botMention, "").trim();
+            return rawMessage.replace(botMention, "").trim().toLowerCase();
         } else {
             return '';
         }

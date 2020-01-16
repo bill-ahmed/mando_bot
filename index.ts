@@ -18,16 +18,12 @@ app.post('*', (req, res) => {
 		
         res.sendStatus(200);
 
-		// Log and forward request to appropriate handler
-		console.log("Good request.", req.body);
-
 		switch (req.body.event.type) {
 			case "url_verification":
 				rq.validateRequestURL(req, res);
 				break;
 		
 			case "app_mention":
-				console.log("app mention!");
 				rq.appMention(req, res);
 				break;
 
