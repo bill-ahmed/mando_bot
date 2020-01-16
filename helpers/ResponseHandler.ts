@@ -36,6 +36,8 @@ export default class ResponseHandler {
             case "quote":
                 var randQuote = InspirationalQuotes[GetRandomInt(0, InspirationalQuotes.length - 1)];
                 response = `_${randQuote.quote} — ${randQuote.author}, ${randQuote.source}_`;
+                
+                break;
             case "random":
                 response = "`random` is WIP :)";
                 break;
@@ -49,6 +51,7 @@ export default class ResponseHandler {
 
                     response = `${randGreeting} <@${sender}> ${randHappyEmoji}`;
                 }
+                break;
         }
 
         return response;
