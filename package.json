@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly index.ts",
-    "prod": "tsc && cp config.json ./build && node ./build/index.js",
+    "dev": "set DEGUB=* && ts-node-dev --respawn --transpileOnly index.ts",
+    "prod": "tsc && cp config.json ./build && export NODE_ENV=production && node ./build/index.js",
     "build": "tsc && cp config.json ./build"
   },
   "author": "Bilal Ahmed",
@@ -17,6 +17,7 @@
     "@types/request": "^2.48.4",
     "request": "^2.88.0",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "winston": "^3.2.1"
   }
 }

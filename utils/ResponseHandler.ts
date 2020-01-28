@@ -81,7 +81,7 @@ export default class ResponseHandler {
             body: body,
             headers: headers
         }, (error: any, resp: any, body: any) => {
-            if (error) {console.error(error)}
+            if (error) {console.log(error)}
         });
     }
 }
