@@ -1,5 +1,5 @@
 # Slack Bot
-This Slack bot was creating using [Bolt](https://github.com/slackapi/bolt).
+This Slack bot was created as a fun side-project 😊.
 
 ## Setup
 This application requires the LTS version of [NodeJS](https://nodejs.org/en/download/).
