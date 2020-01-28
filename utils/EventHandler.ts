@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import logger from './Logger';
 import ResponseHandler from './ResponseHandler';
 const config = require('../config.json');
@@ -9,7 +9,7 @@ export default class EventHandler {
         this.rh = new ResponseHandler();
     }
 
-    public async appMention(req: any, res: any): Promise<any>{
+    public async appMention(req: Request, res: any): Promise<any>{
         var rawMessage = req.body.event.text    as string;
         var sender = req.body.event.user        as string;
         var channel = req.body.event.channel    as string;
@@ -24,7 +24,7 @@ export default class EventHandler {
     }
 
     /**When setting up a slackbot, the request URL must be validated*/
-    public async validateRequestURL(req: any, res: any): Promise<any>{
+    public async validateRequestURL(req: Request, res: any): Promise<any>{
         res.send(req.body.challenge);
         logger.info("Verified request URL, token: " + req.body.token);
     }
