@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "dev": "set DEGUB=* && ts-node-dev --respawn --transpileOnly index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly index.ts",
     "build": "tsc && cp config.json ./build"
   },
   "author": "Bilal Ahmed",

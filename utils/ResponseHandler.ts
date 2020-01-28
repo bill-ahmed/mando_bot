@@ -27,17 +27,18 @@ export default class ResponseHandler {
      * @sender The user that sent the message
      */
     public getResponseByMessage(message: string, sender: string): string{
-        var response = "Hmm, I didn't catch that. To get an idea of what I can do, try `@Mando_bot help`";
+        var response = `Hmm, I didn't catch that. To get an idea of what I can do, try \`@${config.slack.bot_name} help\``;
 
-        switch (message) {
+        switch (message.toLowerCase()) {
             case "help":
                 response = "Hey there! The following prompts are available: `help`, `quote`, and `random`.";
+                logger.info("Sent help info.");
                 break;
 
             case "quote":
                 var randQuote = InspirationalQuotes[GetRandomInt(0, InspirationalQuotes.length - 1)];
                 response = `_${randQuote.quote} — ${randQuote.author}, ${randQuote.source}_`;
-                
+                logger.info("Sent a quote.");
                 break;
             case "random":
                 response = "`random` is WIP :)";
@@ -50,8 +51,9 @@ export default class ResponseHandler {
                     var randGreeting = HelloGreetingsResponse[ GetRandomInt(0, HelloGreetingsResponse.length - 1) ]
                     var randHappyEmoji = HappyEmoji[ GetRandomInt(0, HappyEmoji.length - 1) ]
 
-                    response = `${randGreeting} <@${sender}> ${randHappyEmoji}`;
+                    response = `${randGreeting} <@${sender}>${randHappyEmoji}`;
                 }
+                logger.info("Sent hello greeting");
                 break;
         }
 
@@ -62,27 +64,36 @@ export default class ResponseHandler {
      * @param response The message to send
      * @param channel The channel to write this message to
      */
-    public sendChatResponse(response: string, channel: string): void{
-        var endpoint = config.slack.messaging.chatMessage;
-        var headers = {
-                'Authorization': "Bearer " + config.slack.bot_token,
-                'Content-Type': 'application/json',
-        };
+    public sendChatResponse(response: string, channel: string): Promise<any>{
+        return new Promise((resolve, reject) => {
 
-        var body = {
-            text: response,
-            channel: channel,
-            link_names: true
-        };
+            var endpoint = config.slack.messaging.chatMessage;
+            var headers = {
+                    'Authorization': "Bearer " + config.slack.bot_token,
+                    'Content-Type': 'application/json',
+            };
 
-        request.post({
-            url: endpoint, 
-            method: "POST",
-            json: true,
-            body: body,
-            headers: headers
-        }, (error: any, resp: any, body: any) => {
-            if (error) {logger.error(error)}
+            var body = {
+                text: response,
+                channel: channel,
+                link_names: true
+            };
+
+            request.post({
+                url: endpoint, 
+                method: "POST",
+                json: true,
+                body: body,
+                headers: headers
+            }, (error: any, resp: any, body: any) => {
+                if (error) {
+                    logger.error("Error sending a chat response.");
+                    logger.error(error);
+                    reject(error);
+                } else {
+                    resolve(resp);
+                }
+            });
         });
     }
 }

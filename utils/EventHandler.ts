@@ -9,22 +9,22 @@ export default class EventHandler {
         this.rh = new ResponseHandler();
     }
 
-    public appMention(req: any, res: any): void{
+    public async appMention(req: any, res: any): Promise<any>{
         var rawMessage = req.body.event.text    as string;
         var sender = req.body.event.user        as string;
         var channel = req.body.event.channel    as string;
 
         // Only consider messages that mention the bot in the beginning, empty string if not so
         var message = this.getMessage(rawMessage);
-        
+        logger.info("Message: " + message);
+
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender);
         this.rh.sendChatResponse(response, channel);
-
     }
 
     /**When setting up a slackbot, the request URL must be validated*/
-    public validateRequestURL(req: any, res: any): void{
+    public async validateRequestURL(req: any, res: any): Promise<any>{
         res.send(req.body.challenge);
         logger.info("Verified request URL, token: " + req.body.token);
     }
@@ -41,11 +41,7 @@ export default class EventHandler {
      */
     private getMessage(rawMessage: string): string {
         var botMention = this.getBotTag();
-
-        if(rawMessage.startsWith(botMention)){
-            return rawMessage.replace(botMention, "").trim().toLowerCase();
-        } else {
-            return '';
-        }
+        
+        return rawMessage.replace(botMention, "").trim()
     }
 }

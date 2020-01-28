@@ -17,14 +17,16 @@ app.use(bodyParser.json());
 app.post('*', (req, res) => {
 	// If valid token provided
 	if(req.body.token && req.body.token === ALLOW_TOKEN){
-		
-        res.sendStatus(200);
+		logger.info(JSON.stringify(req.body, null, 2));
 
+		if(req.body.type === 'url_verification'){
+			rq.validateRequestURL(req, res);
+			logger.info("Validated new request URL!")
+			return;
+		}
+
+		res.sendStatus(200);
 		switch (req.body.event.type) {
-			case "url_verification":
-				rq.validateRequestURL(req, res);
-				break;
-		
 			case "app_mention":
 				rq.appMention(req, res);
 				break;
