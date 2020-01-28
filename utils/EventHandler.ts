@@ -1,4 +1,5 @@
 import { Response } from 'express';
+import logger from './Logger';
 import ResponseHandler from './ResponseHandler';
 const config = require('../config.json');
 
@@ -25,7 +26,7 @@ export default class EventHandler {
     /**When setting up a slackbot, the request URL must be validated*/
     public validateRequestURL(req: any, res: any): void{
         res.send(req.body.challenge);
-        console.log("Verified request URL, token: " + req.body.token);
+        logger.info("Verified request URL, token: " + req.body.token);
     }
 
     /**Get the tag representing this bot's id in message mentions for a workspace. E.g. id "ABCDE" would yield "<@ABCDE>" 

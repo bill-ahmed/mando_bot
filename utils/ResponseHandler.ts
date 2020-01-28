@@ -1,4 +1,5 @@
 import request from 'request';
+import logger from './Logger';
 import { GetRandomInt } from './Helpers';
 const config = require('../config.json');
 
@@ -81,7 +82,7 @@ export default class ResponseHandler {
             body: body,
             headers: headers
         }, (error: any, resp: any, body: any) => {
-            if (error) {console.log(error)}
+            if (error) {logger.error(error)}
         });
     }
 }

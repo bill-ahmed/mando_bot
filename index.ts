@@ -1,4 +1,5 @@
 import express from "express";
+import logger from './utils/Logger';
 import EventHandler from "./utils/EventHandler";
 const config = require('./config.json');
 
@@ -33,7 +34,7 @@ app.post('*', (req, res) => {
 		}
 		
 	} else {
-		logger.info(req.body);
+		logger.warn(req.body);
 		res.sendStatus(403)
 	}
 });

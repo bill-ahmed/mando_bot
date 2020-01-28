@@ -12,7 +12,7 @@ This application requires the LTS version of [NodeJS](https://nodejs.org/en/down
 ## Running the app
 In the project repo, use `npm run dev` to start the server in development mode. For other use cases, take a look at `package.json` for additional scripts.
 * Build JS Bundle: `npm run build`
-* Production: `npm run prod`
+* Production: `NODE_ENV=production node ./build/index.js`
 * Etc...
 
 
