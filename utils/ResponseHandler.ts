@@ -29,7 +29,7 @@ export default class ResponseHandler {
         switch (message.toLowerCase()) {
             case "help":
                 response = "Hey there! The following prompts are available: `help`, `quote`, and `random`.";
-                logger.info("Sent help info.");
+                logger.debug("Sent help info.");
                 break;
 
             default:
@@ -41,7 +41,7 @@ export default class ResponseHandler {
 
                     response = `${randGreeting} <@${sender}>${randHappyEmoji}`;
                 }
-                logger.info("Sent hello greeting");
+                logger.debug("Sent hello greeting");
 
                 break;
         }

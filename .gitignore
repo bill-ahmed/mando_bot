@@ -109,4 +109,4 @@ build/config.json
 build
 
 # logging
-logs/*
+logs

@@ -17,7 +17,7 @@ const ev = new EventHandler();
 app.post('*', (req, res) => {
 	// If valid token provided
 	if(req.body.token && req.body.token === ALLOW_TOKEN){
-		logger.info(JSON.stringify(req.body, null, 2));
+		logger.debug(JSON.stringify(req.body, null, 2));
 
 		if(req.body.type === 'url_verification'){
 			ev.validateRequestURL(req, res);
@@ -36,7 +36,7 @@ app.post('*', (req, res) => {
 		}
 		
 	} else {
-		logger.warn(req.body);
+		logger.warn(`Unauthenticated request from ${req.ip} with\nHeaders:\n${JSON.stringify(req.headers, null, 2)}\n\nBody:\n${JSON.stringify(req.body, null, 2)}`);
 		res.sendStatus(403)
 	}
 });

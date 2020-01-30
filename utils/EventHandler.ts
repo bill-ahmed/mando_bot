@@ -16,7 +16,7 @@ export default class EventHandler {
 
         // Only consider messages that mention the bot in the beginning, empty string if not so
         var message = this.getMessage(rawMessage);
-        logger.info("Message: " + message);
+        logger.debug("Message: " + message);
 
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender);
