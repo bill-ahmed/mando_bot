@@ -4,14 +4,14 @@ import EventHandler from "./utils/EventHandler";
 const config = require('./config.json');
 
 const app = express()
-
-var bodyParser = require('body-parser');
-
 const port = 3500;
 const ALLOW_TOKEN = config.slack.slack_token;
-const rq = new EventHandler();
 
+var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
+
+const ev = new EventHandler();
 
 /**Validate all incoming requests before continuing */
 app.post('*', (req, res) => {
@@ -20,7 +20,7 @@ app.post('*', (req, res) => {
 		logger.info(JSON.stringify(req.body, null, 2));
 
 		if(req.body.type === 'url_verification'){
-			rq.validateRequestURL(req, res);
+			ev.validateRequestURL(req, res);
 			logger.info("Validated new request URL!")
 			return;
 		}
@@ -28,7 +28,7 @@ app.post('*', (req, res) => {
 		res.sendStatus(200);
 		switch (req.body.event.type) {
 			case "app_mention":
-				rq.appMention(req, res);
+				ev.appMention(req, res);
 				break;
 
 			default:

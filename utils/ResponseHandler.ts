@@ -14,9 +14,6 @@ const HelloGreetings = utils.HelloGreetings                 as [string];
 /**List of hello greetings the bot CAN RESPOND with. */
 const HelloGreetingsResponse = utils.HelloGreetingsResponse as [string];
 
-/**Some inspirational quotes... */
-const InspirationalQuotes = utils.InspirationalQuotes       as [any];
-
 export default class ResponseHandler {
     constructor() {
         // Empty   
@@ -35,15 +32,6 @@ export default class ResponseHandler {
                 logger.info("Sent help info.");
                 break;
 
-            case "quote":
-                var randQuote = InspirationalQuotes[GetRandomInt(0, InspirationalQuotes.length - 1)];
-                response = `_${randQuote.quote} — ${randQuote.author}, ${randQuote.source}_`;
-                logger.info("Sent a quote.");
-                break;
-            case "random":
-                response = "`random` is WIP :)";
-                break;
-
             default:
 
                 // For stuff like "hello" and others, there are many possible variants
@@ -54,9 +42,9 @@ export default class ResponseHandler {
                     response = `${randGreeting} <@${sender}>${randHappyEmoji}`;
                 }
                 logger.info("Sent hello greeting");
+
                 break;
         }
-
         return response;
     }
 
