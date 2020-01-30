@@ -1,6 +1,0 @@
-{
-    "slack": {
-        "signing_secret": "YOUR SECRET HERE",
-        "bot_token": "YOUR TOKEN HERE"
-    }
-}
