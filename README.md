@@ -12,7 +12,7 @@ This application requires the LTS version of [NodeJS](https://nodejs.org/en/down
 4. Done!
 
 ### Configuration
-The bot requires a `config.json` file in the root directory, with the following format:
+The bot requires a `config.json` file in the root directory, with the following base format:
 
 ```json
 {
@@ -24,11 +24,7 @@ The bot requires a `config.json` file in the root directory, with the following 
         "bot_name": "BOT-NAME",
         "messaging": {
             "chatMessage": "https://slack.com/api/chat.postMessage"
-            /*Any additional endpoints here*/
         }
-    },
-    "utils": {
-        /*Any additional utilities*/
     }
 }
 ```
