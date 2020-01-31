@@ -1,18 +1,18 @@
 import request from 'request';
 import logger from './Logger';
+import * as Greetings from '../models/AppMentions/Greetings';
 import { GetRandomInt } from './Helpers';
 const config = require('../config.json');
 
-const utils = config.utils;
 
 /**List of happy emojis */
-const HappyEmoji = utils.HappyEmoji                         as [string];
+const HappyEmoji = Greetings.GreetingEmoji;
 
 /**List of hello greetings the bot CAN RECIEVE. */
-const HelloGreetings = utils.HelloGreetings                 as [string];
+const HelloGreetings = Greetings.HelloGreetings;
 
 /**List of hello greetings the bot CAN RESPOND with. */
-const HelloGreetingsResponse = utils.HelloGreetingsResponse as [string];
+const HelloGreetingsResponse = Greetings.HelloGreetingsResponses;
 
 export default class ResponseHandler {
     constructor() {
