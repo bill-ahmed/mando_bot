@@ -2,8 +2,9 @@ import request from 'request';
 import logger from './Logger';
 import * as Greetings from '../models/AppMentions/Greetings';
 import { GetRandomInt } from './Helpers';
-const config = require('../config.json');
 
+const config = require('../config.json');
+const bot_token = config.slack.bot_token || process.env.MANDO_BOT_TOKEN;
 
 /**List of happy emojis */
 const HappyEmoji = Greetings.GreetingEmoji;
@@ -28,7 +29,7 @@ export default class ResponseHandler {
 
         switch (message.toLowerCase()) {
             case "help":
-                response = "Hey there! The following prompts are available: `help`, `quote`, and `random`.";
+                response = "Hey there! The following prompts are available: `help`.";
                 logger.debug("Sent help info.");
                 break;
 
@@ -57,7 +58,7 @@ export default class ResponseHandler {
 
             var endpoint = config.slack.messaging.chatMessage;
             var headers = {
-                    'Authorization': "Bearer " + config.slack.bot_token,
+                    'Authorization': "Bearer " + bot_token,
                     'Content-Type': 'application/json',
             };
 
