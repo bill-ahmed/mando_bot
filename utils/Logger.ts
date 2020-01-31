@@ -6,6 +6,7 @@ const logFile = `logs_${new Date().toISOString().replace(":", "_").replace(":", 
 
 /** A logger for console or log file, based on environment */
 export default winston.createLogger({
+    level: env === 'production' ? 'info' : 'debug',
     format: winston.format.combine(
         winston.format.timestamp(),
         winston.format.simple(),
@@ -14,7 +15,7 @@ export default winston.createLogger({
 	transports: env === 'production' ? [
 		new winston.transports.File(
             {
-                filename: `${__dirname}/logs/${logFile}`, 
+                filename: `${__dirname}/../logs/${logFile}`, 
                 level: 'info',
                 format: winston.format.combine(
                     winston.format.timestamp(),

@@ -1,6 +1,6 @@
 /**
- * Possible ways to end a greeting
- * */
+ * Some ways to end a greeting
+ */
 export const GreetingEmoji:string[] = ["!", " 😄", " 😊", " 🙂", " 😃"];
 
 /**

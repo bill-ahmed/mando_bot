@@ -14,9 +14,9 @@ export default class EventHandler {
         var sender = req.body.event.user        as string;
         var channel = req.body.event.channel    as string;
 
-        // Only consider messages that mention the bot in the beginning, empty string if not so
+        // Only consider messages that mention the bot, empty string if not so
         var message = this.getMessage(rawMessage);
-        logger.debug("Message: " + message);
+        logger.debug("Parsed Message: " + message);
 
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender);
