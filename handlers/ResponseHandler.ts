@@ -1,7 +1,7 @@
 import request from 'request';
-import logger from './Logger';
+import logger from '../utils/Logger';
 import * as Greetings from '../models/AppMentions/Greetings';
-import { GetRandomInt } from './Helpers';
+import { GetRandomInt } from '../utils/Helpers';
 
 const config = require('../config.json');
 const bot_token = config.slack.bot_token || process.env.MANDO_BOT_TOKEN;

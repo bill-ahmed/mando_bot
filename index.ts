@@ -1,6 +1,7 @@
 import express from "express";
 import logger from './utils/Logger';
-import EventHandler from "./utils/EventHandler";
+import EventHandler from "./handlers/EventHandler";
+import RouteRequest from "./utils/Router";
 const config = require('./config.json');
 
 const app = express()
@@ -18,7 +19,7 @@ const ev = new EventHandler();
 app.post('*', (req, res) => {
 	// If valid token provided
 	if(req.body.token && req.body.token === ALLOW_TOKEN){
-		logger.debug(JSON.stringify(req.body, null, 2));
+		logger.debug(JSON.stringify(req.body));
 
 		if(req.body.type === 'url_verification'){
 			ev.validateRequestURL(req, res);
@@ -27,14 +28,7 @@ app.post('*', (req, res) => {
 		}
 
 		res.sendStatus(200);
-		switch (req.body.event.type) {
-			case "app_mention":
-				ev.appMention(req, res);
-				break;
-
-			default:
-				break;
-		}
+		RouteRequest(req.body.event.type, req, res);
 		
 	} else {
 		logger.warn(`Unauthenticated request from ${req.ip} with\nHeaders:\n${JSON.stringify(req.headers, null, 2)}\n\nBody:\n${JSON.stringify(req.body, null, 2)}`);
