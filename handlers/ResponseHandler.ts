@@ -28,24 +28,31 @@ export default class ResponseHandler {
      */
     public getResponseByMessage(message: string, sender: string, type: string): string{
         var response = `Hmm, I didn't catch that. To get an idea of what I can do, try \`@${config.slack.bot_name} help\``;
+        var ea = new EventMessageAnalyzer()
+        
 
-        switch (message.toLowerCase()) {
-            case "help":
-                response = "Hey there! The following prompts are available: `help`.";
-                logger.debug("Sent help info.");
-                break;
+        switch (type) {
+            case "event_callback":
+                var messageType = ea.analyzeMessage(message);
+                switch (messageType) {
+                    case "help":
+                        response = "Hey there! The following prompts are available: `help`.";
+                        logger.debug("Sent help info.");
+                        break;
+                
+                    case "greeting":
+                        var randGreeting = HelloGreetingsResponse[ GetRandomInt(0, HelloGreetingsResponse.length - 1) ]
+                        var randHappyEmoji = HappyEmoji[ GetRandomInt(0, HappyEmoji.length - 1) ]
+
+                        response = `${randGreeting} <@${sender}>${randHappyEmoji}`;
+                        logger.debug("Sent hello greeting");
+                        break;
+
+                    default:
+                        break;
+                }
 
             default:
-
-                // For stuff like "hello" and others, there are many possible variants
-                if(HelloGreetings.includes(message)){
-                    var randGreeting = HelloGreetingsResponse[ GetRandomInt(0, HelloGreetingsResponse.length - 1) ]
-                    var randHappyEmoji = HappyEmoji[ GetRandomInt(0, HappyEmoji.length - 1) ]
-
-                    response = `${randGreeting} <@${sender}>${randHappyEmoji}`;
-                }
-                logger.debug("Sent hello greeting");
-
                 break;
         }
         return response;
