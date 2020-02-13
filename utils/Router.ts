@@ -10,7 +10,7 @@ const ev = new EventHandler();
  * @param req Request data (headers, body, etc.)
  * @param res Response handler object
  */
-export default function RouteRequest(requestType: string, req: Request, res: Response) : void{
+export default async function RouteRequest(requestType: string, req: Request, res: Response) : Promise<void>{
     switch (requestType) {
         case "app_mention":
             ev.appMention(req, res);

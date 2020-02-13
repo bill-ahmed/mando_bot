@@ -1,5 +1,6 @@
 import request from 'request';
 import logger from '../utils/Logger';
+import EventMessageAnalyzer from '../MessageAnalyzers/EventMessageAnalyzer';
 import * as Greetings from '../models/AppMentions/Greetings';
 import { GetRandomInt } from '../utils/Helpers';
 
@@ -22,9 +23,10 @@ export default class ResponseHandler {
 
     /**Given a message, and the person that sent it, make an appropriate response
      * @param message The message that this bot is mentioned in
-     * @sender The user that sent the message
+     * @param sender The user that sent the message
+     * @param type The type of this message, for example "event"
      */
-    public getResponseByMessage(message: string, sender: string): string{
+    public getResponseByMessage(message: string, sender: string, type: string): string{
         var response = `Hmm, I didn't catch that. To get an idea of what I can do, try \`@${config.slack.bot_name} help\``;
 
         switch (message.toLowerCase()) {

@@ -13,13 +13,14 @@ export default class EventHandler {
         var rawMessage = req.body.event.text    as string;
         var sender = req.body.event.user        as string;
         var channel = req.body.event.channel    as string;
+        var messageType = req.body.type         as string;
 
         // Only consider messages that mention the bot, empty string if not so
         var message = this.getMessage(rawMessage);
         logger.debug("Parsed Message: " + message);
 
         // Build response based on message
-        var response = this.rh.getResponseByMessage(message, sender);
+        var response = this.rh.getResponseByMessage(message, sender, messageType);
         this.rh.sendChatResponse(response, channel);
     }
 

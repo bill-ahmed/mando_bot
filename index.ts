@@ -17,6 +17,7 @@ const ev = new EventHandler();
 
 /**Validate all incoming requests before continuing */
 app.post('*', (req, res) => {
+
 	// If valid token provided
 	if(req.body.token && req.body.token === ALLOW_TOKEN){
 		logger.debug(JSON.stringify(req.body));
