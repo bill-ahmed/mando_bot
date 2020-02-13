@@ -1,5 +1,5 @@
 # Slack Bot
-This Slack bot was created as a fun side-project :)
+This bot was created as a fun side-project & template to get quickly started with a slack bot. Checkout below for more info.
 
 ## Setup
 
@@ -39,4 +39,4 @@ Additional scripts:
 * Production: `NODE_ENV=production node ./build/index.js`
 
 ## Additional Notes
-All logging will be sent to the console when running in dev. When in production, all logs are combined into a single file and placed in `build/logs`.
+All logging will be sent to the console when running in dev. When in production, all logs are combined into a single file and placed in `build/logs/logs_{current_date}.log`.
