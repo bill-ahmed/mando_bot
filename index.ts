@@ -7,7 +7,7 @@ const config = require('./config.json');
 const app = express()
 const port = 3500;
 
-const ALLOW_TOKEN = config.slack.slack_token || process.env.MANDO_SLACK_TOKEN;
+const ALLOW_TOKEN = config.slack.verification_token || process.env.MANDO_SLACK_TOKEN;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());

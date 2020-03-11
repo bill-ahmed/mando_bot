@@ -21,7 +21,11 @@ export default class EventHandler {
 
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender, messageType);
-        this.rh.sendChatResponse(response, channel);
+        this.rh.sendChatResponse(response, channel)
+        .then(resp => {
+            logger.debug("Got response:")
+            logger.debug(JSON.stringify(resp));
+        });
     }
 
     /**When setting up a slackbot, the request URL must be validated*/

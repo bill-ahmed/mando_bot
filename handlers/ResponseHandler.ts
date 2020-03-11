@@ -3,9 +3,10 @@ import logger from '../utils/Logger';
 import EventMessageAnalyzer from '../MessageAnalyzers/EventMessageAnalyzer';
 import * as Greetings from '../models/AppMentions/Greetings';
 import { GetRandomInt } from '../utils/Helpers';
+import Logger from '../utils/Logger';
 
 const config = require('../config.json');
-const bot_token = config.slack.bot_token || process.env.MANDO_BOT_TOKEN;
+const bot_token = config.slack.bot_oauth_token || process.env.MANDO_BOT_TOKEN;
 
 /**List of happy emojis */
 const HappyEmoji = Greetings.GreetingEmoji;

@@ -16,8 +16,8 @@ The bot requires a `config.json` file in the root directory, with the following 
 ```json
 {
     "slack": {
-        "bot_token": "YOUR-BOT-TOKEN",
-        "slack_token": "YOUR-SLACK-TOKEN",
+        "bot_oauth_token": "YOUR-BOT-OAUTH-TOKEN",
+        "verification_token": "YOUR-SLACK-VERIFICATION-TOKEN",
         "bot_id": "BOT-ID",
         "bot_name": "BOT-NAME",
         "messaging": {
@@ -27,8 +27,8 @@ The bot requires a `config.json` file in the root directory, with the following 
 }
 ```
 The `bot_token` and `slack_token` fields are optional. If they are not provided, the following **environment variables** will be used in their place:
-* `bot_token` -> `MANDO_BOT_TOKEN`
-* `slack_token` -> `MANDO_SLACK_TOKEN`
+* `bot_oauth_token` -> `MANDO_BOT_TOKEN`
+* `verification_token` -> `MANDO_SLACK_TOKEN`
 
 For additional information on getting started, take a look at the [Bot Users](https://api.slack.com/bot-users) setup guide and the [Events API](https://api.slack.com/events-api).
 
