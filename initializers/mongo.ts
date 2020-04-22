@@ -5,7 +5,7 @@ import * as config from '../config/db_config.json';
 /** Initialize connection to database */
 export default function main(): void {
     const url = config.mongo_db.url + config.mongo_db.database;
-    const options = { useNewUrlParser: true };
+    const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
     mongoose.connect(url, options);
 

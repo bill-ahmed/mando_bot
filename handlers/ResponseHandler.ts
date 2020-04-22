@@ -1,7 +1,7 @@
 import request from 'request';
 import logger from '../utils/Logger';
 import EventMessageAnalyzer from '../MessageAnalyzers/EventMessageAnalyzer';
-import * as Greetings from '../models/AppMentions/Greetings';
+import * as Greetings from '../MessageResponses/AppMentions/Greetings';
 import { GetRandomInt } from '../utils/Helpers';
 import Logger from '../utils/Logger';
 
