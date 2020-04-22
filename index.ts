@@ -3,6 +3,7 @@ import logger from './utils/Logger';
 import './initializers';
 import EventHandler from "./handlers/EventHandler";
 import RouteRequest from "./utils/Router";
+import User from './models/User.model';
 const config = require('./config.json');
 
 const app = express()
@@ -43,4 +44,16 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(port, () => logger.info(`Mando Bot listening on port ${port}!`))
+app.listen(port, () => {
+	logger.info(`Mando Bot listening on port ${port}!`);
+	// let u = new User(
+	// 	{
+	// 		first_name: "test", last_name: "last_name", gender: "male",
+	// 		birthday: new Date(), email: "test@email.com", slack_id: "12345"
+	// 	}
+	// );
+	// u.save((err, temp) => {
+	// 	if(err) {logger.error(err)}
+	// 	logger.info("Created new user")
+	// });
+});
