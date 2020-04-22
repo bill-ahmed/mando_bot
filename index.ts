@@ -1,5 +1,6 @@
 import express from "express";
 import logger from './utils/Logger';
+import './initializers';
 import EventHandler from "./handlers/EventHandler";
 import RouteRequest from "./utils/Router";
 const config = require('./config.json');
@@ -11,6 +12,11 @@ const ALLOW_TOKEN = config.slack.verification_token || process.env.MANDO_SLACK_T
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
+
+/** 
+ * INITIALIZE APPLICATION  
+ **/
 
 
 const ev = new EventHandler();
