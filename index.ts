@@ -3,7 +3,7 @@ import logger from './utils/Logger';
 import './initializers';
 import EventHandler from "./handlers/EventHandler";
 import RouteRequest from "./utils/Router";
-import User from './models/User.model';
+import User from './models/User/User.model';
 const config = require('./config.json');
 
 const app = express()
