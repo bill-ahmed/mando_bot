@@ -105,8 +105,11 @@ dist
 
 # ignore config files
 src/config/config.json
-build/src/config.json
+src/config/db_config.json
+
 build
+build/src/config.json
+build/src/db_config.json
 
 # logging
 logs
