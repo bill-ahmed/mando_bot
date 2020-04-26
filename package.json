@@ -7,7 +7,7 @@
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
-    "build": "tsc && cp src/config/ ./build"
+    "build": "tsc && cp -r src/config/ ./build/src"
   },
   "author": "Bilal Ahmed",
   "license": "ISC",
@@ -16,8 +16,6 @@
     "mongoose": "^5.9.10",
     "mongoose-unique-validator": "^2.0.3",
     "request": "^2.88.0",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.4",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -31,7 +29,7 @@
     "jasmine-ts": "^0.3.0",
     "request": "^2.88.0",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.4",
+    "typescript": "^3.8.3",
     "winston": "^3.2.1"
   }
 }
