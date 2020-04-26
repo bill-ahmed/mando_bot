@@ -104,8 +104,8 @@ dist
 .tern-port
 
 # ignore config files
-config/config.json
-build/config.json
+src/config/config.json
+build/src/config.json
 build
 
 # logging

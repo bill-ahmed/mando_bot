@@ -12,7 +12,7 @@ This application requires the LTS version of [NodeJS](https://nodejs.org/en/down
 
 ### Configuration
 #### General Config
-The bot requires a `config.json` file in the root directory, with the following base format:
+The bot requires a file `src/config/config.json` with the following base format:
 
 ```json
 {
@@ -32,7 +32,7 @@ The `bot_token` and `slack_token` fields are optional. If they are not provided,
 * `verification_token` -> `MANDO_SLACK_TOKEN`
 
 #### DB Config
-The file `config/db_config.json` helps initialize a connection to MongoDB. The following is the base format:
+The file `src/config/db_config.json` helps initialize a connection to MongoDB. The following is the base format:
 
 ```json
 {
