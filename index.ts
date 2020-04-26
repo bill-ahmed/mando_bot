@@ -1,8 +1,10 @@
 import express from "express";
-import logger from './utils/Logger';
-import EventHandler from "./handlers/EventHandler";
-import RouteRequest from "./utils/Router";
-const config = require('./config.json');
+import logger from './src/utils/Logger';
+import './src/initializers';
+import EventHandler from "./src/handlers/EventHandler";
+import RouteRequest from "./src/utils/Router";
+import User from './src/models/User/User.model';
+const config = require('./src/config/config.json');
 
 const app = express()
 const port = 3500;
@@ -11,6 +13,11 @@ const ALLOW_TOKEN = config.slack.verification_token || process.env.MANDO_SLACK_T
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
+
+/** 
+ * INITIALIZE APPLICATION  
+ **/
 
 
 const ev = new EventHandler();
@@ -37,4 +44,6 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(port, () => logger.info(`Mando Bot listening on port ${port}!`))
+app.listen(port, () => {
+	logger.info(`Mando Bot listening on port ${port}!`);
+});

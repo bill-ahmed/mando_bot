@@ -1,0 +1,7 @@
+{
+    "mongo_db": {
+        "url": "mongodb://localhost/",
+        "port": "27017",
+        "database": "mando_bot"
+    }
+}

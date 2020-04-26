@@ -1,5 +1,5 @@
 import logger from '../utils/Logger';
-import * as Greetings from '../models/AppMentions/Greetings';
+import * as Greetings from '../MessageResponses/AppMentions/Greetings';
 import MessageAnalyzer from './MessageAnalyzerInterface';
 
 /**List of hello greetings the bot CAN RECIEVE. */

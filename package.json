@@ -7,11 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
-    "build": "tsc && cp config.json ./build"
+    "build": "tsc && cp src/config/ ./build"
   },
   "author": "Bilal Ahmed",
   "license": "ISC",
   "dependencies": {
+    "@typegoose/typegoose": "^7.0.0",
+    "mongoose": "^5.9.10",
+    "mongoose-unique-validator": "^2.0.3",
     "request": "^2.88.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.4",
@@ -19,6 +22,8 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
+    "@types/mongoose": "^5.7.12",
+    "@types/mongoose-unique-validator": "^1.0.4",
     "@types/request": "^2.48.4",
     "express": "^4.17.1",
     "request": "^2.88.0",

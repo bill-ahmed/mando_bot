@@ -1,11 +1,11 @@
 import request from 'request';
 import logger from '../utils/Logger';
 import EventMessageAnalyzer from '../MessageAnalyzers/EventMessageAnalyzer';
-import * as Greetings from '../models/AppMentions/Greetings';
+import * as Greetings from '../MessageResponses/AppMentions/Greetings';
 import { GetRandomInt } from '../utils/Helpers';
 import Logger from '../utils/Logger';
 
-const config = require('../config.json');
+const config = require('../config/config.json');
 const bot_token = config.slack.bot_oauth_token || process.env.MANDO_BOT_TOKEN;
 
 /**List of happy emojis */
