@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 import logger from '../utils/Logger';
 import ResponseHandler from './ResponseHandler';
-const config = require('../config.json');
+const config = require('../config/config.json');
 
 export default class EventHandler {
     rh: ResponseHandler;

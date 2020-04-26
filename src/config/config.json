@@ -1,0 +1,9 @@
+{
+    "slack": {
+        "bot_id": "USCF49917",
+        "bot_name": "Mando_bot_dev",
+        "messaging": {
+            "chatMessage": "https://slack.com/api/chat.postMessage"
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import express from "express";
-import logger from './utils/Logger';
-import './initializers';
-import EventHandler from "./handlers/EventHandler";
-import RouteRequest from "./utils/Router";
-import User from './models/User/User.model';
-const config = require('./config.json');
+import logger from './src/utils/Logger';
+import './src/initializers';
+import EventHandler from "./src/handlers/EventHandler";
+import RouteRequest from "./src/utils/Router";
+import User from './src/models/User/User.model';
+const config = require('./src/config/config.json');
 
 const app = express()
 const port = 3500;
