@@ -1,23 +1,46 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
+import { prop, getModelForClass, plugin, buildSchema } from '@typegoose/typegoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import UserValidations from './User.validation';
 
-class User {
-    constructor(parameters?: any) {
-        
+/** Declare Types */
+type Gender = "Male" | "Female" | "Other" | "Unknown";
+
+
+@plugin(uniqueValidator)
+class UserClass {
+    @prop({ required: true })
+    first_name!: string;
+
+    @prop()
+    middle_names?: string;
+
+    @prop({ required: true })
+    last_name!: string;
+
+    @prop({ required: true, enum: ['Male', 'Female', 'Other', 'Unknown'] })
+    gender!: Gender;
+
+    @prop({ required: true })
+    date_of_birth!: Date;
+
+    @prop({ required: true, unique: true, uniqueCaseInsensitive: true }) // 'unique' is NOT a validator! https://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator
+    email!: string;
+
+    @prop({ required: true, unique: true, uniqueCaseInsensitive: true })
+    slack_id!: string;
+
+    /** Virtuals */
+    public get fullName(): string {
+        return `${this.first_name} ${this.last_name}`;
     }
 }
 
-/** Definition of a user; feel free to add/remove any fields. */
-const UserSchema = new mongoose.Schema({
-    first_name:     { type: String, required: true },
-    middle_names:   { type: Array },
-    last_name:      { type: String, required: true },
-    gender:         { type: String, required: true, enum: ['Male', 'Female', 'Other', 'Unknown'] },
-    birthday:       { type: Date, required: true },
-    email:          { type: String, required: true, unique: true, uniqueCaseInsensitive: true },     // 'unique' is NOT a validator! https://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator
-    slack_id:       { type: String, required: true, unique: true, uniqueCaseInsensitive: true }
-}).loadClass(User).plugin(uniqueValidator);     // Can define getters/setters, statics, virtuals, etc. https://mongoosejs.com/docs/guide.html#es6-classes
+const UserSchema = buildSchema(UserClass); 
+
+/** Validations */
+UserSchema.path('email').validate(UserValidations.validate_email);
+UserSchema.path('slack_id').validate(UserValidations.validate_slack_id);
 
 /** A document representing a User. */
 export default mongoose.model('User', UserSchema);

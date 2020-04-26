@@ -12,6 +12,7 @@
   "author": "Bilal Ahmed",
   "license": "ISC",
   "dependencies": {
+    "@typegoose/typegoose": "^7.0.0",
     "mongoose": "^5.9.10",
     "mongoose-unique-validator": "^2.0.3",
     "request": "^2.88.0",
