@@ -3,7 +3,9 @@ import { prop, getModelForClass, plugin, buildSchema } from '@typegoose/typegoos
 import uniqueValidator from 'mongoose-unique-validator';
 import UserValidations from './User.validation';
 
-/** Declare Types */
+/** Declare Types **/
+
+/** The possible genders a User can have. */
 type Gender = "Male" | "Female" | "Other" | "Unknown";
 
 
@@ -30,7 +32,10 @@ class UserClass {
     @prop({ required: true, unique: true, uniqueCaseInsensitive: true })
     slack_id!: string;
 
-    /** Virtuals */
+
+    /*** DEFINE VIRTUALS ***/
+
+    /** Get a user's full name. E.g. "John Smith", "Bob Murray" */
     public get fullName(): string {
         return `${this.first_name} ${this.last_name}`;
     }
