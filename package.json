@@ -4,7 +4,7 @@
   "description": "A Slack bot :)",
   "main": "index.ts",
   "scripts": {
-    "test": "jasmine",
+    "test": "jasmine-ts \"spec/**/*.spec.ts\"",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
     "build": "tsc && cp src/config/ ./build"
@@ -28,6 +28,7 @@
     "@types/request": "^2.48.4",
     "express": "^4.17.1",
     "jasmine": "^3.5.0",
+    "jasmine-ts": "^0.3.0",
     "request": "^2.88.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.4",
