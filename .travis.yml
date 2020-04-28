@@ -4,3 +4,11 @@ node_js:
   - lts/*
 
 dist: bionic # Ubuntu 18.04 LTS
+
+before_script:
+  # Mongodb may not start right away
+  - sleep 15
+  - mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"password",roles:["readWrite"]});'
+
+services:
+  - mongodb
