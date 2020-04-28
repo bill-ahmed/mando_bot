@@ -1,0 +1,6 @@
+language: node_js
+# Defaults: install is done with `npm ci` and script `npm test` run after.
+node_js:
+  - lts/*
+
+dist: bionic # Ubuntu 18.04 LTS
