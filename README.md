@@ -1,6 +1,6 @@
-# Slack Bot <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot)
+# MandoBot <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot)
 
-This bot was created as a fun side-project & template to get quickly started with a slack bot. Checkout below for more info.
+This bot was created as a template to get quickly started with a slack bot. Checkout below for more info.
 
 ## Setup
 
