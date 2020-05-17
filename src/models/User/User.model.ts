@@ -1,5 +1,5 @@
-import mongoose, { Model } from 'mongoose';
-import { prop, getModelForClass, plugin, buildSchema } from '@typegoose/typegoose';
+import mongoose from 'mongoose';
+import { prop, plugin, buildSchema } from '@typegoose/typegoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import UserValidations from './User.validation';
 
