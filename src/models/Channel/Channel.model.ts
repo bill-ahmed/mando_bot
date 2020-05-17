@@ -7,14 +7,14 @@ class ChannelClass {
 
     // 'unique' is NOT a validator! https://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator
     @prop({ required: true, unique: true, uniqueCaseInsensitive: true })
-    id!: string;
+    channel_id!: string;
 
     @prop({ required: true, default: "" })
     name!: string;
 
     /** Keep track of whether this bot is included in the channel or not. */
-    @prop({ required: true, default: true })
-    includes_bot!: boolean;
+    @prop({ required: false, default: true })
+    includes_bot?: boolean;
 
     @prop({ required: true, default: false })
     is_private!: boolean
@@ -26,8 +26,6 @@ class ChannelClass {
 
 const ChannelSchema = buildSchema(ChannelClass); 
 
-/** Validations */
-
-
 /** A document representing a Channel. */
-export default mongoose.model('Channel', ChannelSchema);
+const Channel =  mongoose.model('Channel', ChannelSchema);
+export default Channel;

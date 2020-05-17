@@ -48,4 +48,5 @@ UserSchema.path('email').validate(UserValidations.validate_email);
 UserSchema.path('slack_id').validate(UserValidations.validate_slack_id);
 
 /** A document representing a User. */
-export default mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+export default User;

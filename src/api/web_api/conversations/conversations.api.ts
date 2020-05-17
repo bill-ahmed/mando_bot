@@ -15,6 +15,7 @@ export async function GetAllChannels(): Promise<Conversation[]> {
         request.get({
             url: endpoint,
             method: "GET",
+            json: true,
             qs: body
         }, (error: any, resp: any, body: any) => {
             if(error) {
@@ -22,7 +23,7 @@ export async function GetAllChannels(): Promise<Conversation[]> {
                 Logger.error(error);
                 reject(error);
             } else {
-                resolve(body);
+                resolve(body.channels);
             }
         });
     });

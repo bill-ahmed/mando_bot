@@ -3,13 +3,14 @@ import ChannelUpdater from './channel_updater/UpdateChannels';
 import { CRONLogger } from '../utils/Logger';
 
 function main() {
+    ChannelUpdater.perform();
     CRONLogger.info("Booting cron jobs...");
 
     // Define schedules
     const CHANNEL_UPDATE_SCHEDULE = '*/5 * * * *';  // Run every 5 minutes
 
     // Instantiate
-    cron.schedule(CHANNEL_UPDATE_SCHEDULE, ChannelUpdater.perform);
+    //cron.schedule(CHANNEL_UPDATE_SCHEDULE, ChannelUpdater.perform);
 }
 
 main();
