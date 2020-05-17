@@ -12,6 +12,11 @@ class ChannelClass {
     @prop({ required: true })
     name!: string;
 
+    /** Keep track of whether this bot is included in the channel or not. */
+    @prop({ required: true })
+    includes_bot!: boolean;
+
+    /** ID of the user that created this channel. */
     @prop()
     creator?: string;
 }
