@@ -4,12 +4,13 @@ import './src/initializers';
 import EventHandler from "./src/handlers/events/app_mentions/Events.handler";
 import RouteRequest from "./src/utils/Router";
 import User from './src/models/User/User.model';
+import AppConfig from "./src/utils/AppConfig";
 const config = require('./src/config/config.json');
 
 const app = express()
 const port = 3500;
 
-const ALLOW_TOKEN = config.slack.verification_token || process.env.MANDO_SLACK_TOKEN;
+const ALLOW_TOKEN = AppConfig.VERIFICATION_TOKEN;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
