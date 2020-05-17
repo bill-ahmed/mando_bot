@@ -1,7 +1,7 @@
-import '../helpers';
+import '../support/helpers';
 import mongoose from 'mongoose';
-import db_config from '../../../src/config/db_config.json';
-import User from '../../../src/models/User/User.model';
+import db_config from '../../src/config/db_config.json';
+import User from '../../src/models/User/User.model';
 
 /** Test mongo db connection */
 describe('Mongoose client', () => {
