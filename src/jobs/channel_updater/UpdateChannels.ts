@@ -19,7 +19,7 @@ export default class ChannelUpdater extends CRONJob {
                 is_private: channel.is_private,
                 creator: channel.creator 
             };
-            await ChannelHelper.findOrCreate(doc.channel_id, doc);
+            await ChannelHelper.createOrUpdate(doc.channel_id, doc);
         });
 
         CRONLogger.info("Finished updating list of channels");
