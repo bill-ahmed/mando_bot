@@ -1,7 +1,7 @@
 import express from "express";
 import logger from './src/utils/Logger';
 import './src/initializers';
-import EventHandler from "./src/handlers/EventHandler";
+import EventHandler from "./src/handlers/events/app_mentions/Events.handler";
 import RouteRequest from "./src/utils/Router";
 import User from './src/models/User/User.model';
 const config = require('./src/config/config.json');
@@ -27,7 +27,7 @@ app.post('*', (req, res) => {
 
 	// If valid token provided
 	if(req.body.token && req.body.token === ALLOW_TOKEN){
-		logger.debug(JSON.stringify(req.body));
+		logger.debug("request body" + JSON.stringify(req.body));
 
 		if(req.body.type === 'url_verification'){
 			ev.validateRequestURL(req, res);
