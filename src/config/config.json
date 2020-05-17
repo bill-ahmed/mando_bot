@@ -2,8 +2,14 @@
     "slack": {
         "bot_id": "USCF49917",
         "bot_name": "Mando_bot_dev",
-        "messaging": {
-            "chatMessage": "https://slack.com/api/chat.postMessage"
+        "webAPI": {
+            "messaging": {
+                "chatMessage": "https://slack.com/api/chat.postMessage"
+            },
+            "conversations": {
+                "user_accessible_channels": "https://slack.com/api/users.conversations"
+            }
         }
+        
     }
 }

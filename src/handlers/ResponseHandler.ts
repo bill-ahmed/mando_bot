@@ -67,7 +67,7 @@ export default class ResponseHandler {
     public sendChatResponse(response: string, channel: string): Promise<any>{
         return new Promise((resolve, reject) => {
 
-            var endpoint = config.slack.messaging.chatMessage;
+            var endpoint = AppConfig.endpoints.CHAT_MESSAGE;
             var headers = {
                     'Authorization': "Bearer " + bot_token,
                     'Content-Type': 'application/json',

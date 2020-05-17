@@ -20,7 +20,6 @@ app.use(bodyParser.json());
  * INITIALIZE APPLICATION  
  **/
 
-
 const ev = new EventHandler();
 
 /**Validate all incoming requests before continuing */
