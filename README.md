@@ -56,4 +56,6 @@ Run `npm run dev` to start the server in development mode.
 2. Start server: `NODE_ENV=production node ./build/index.js`
 
 ## Additional Notes
-All logging will be sent to the console when running in dev. When in production, all logs are combined into a single file and placed in `build/logs/logs_{current_date}.log`.
+All logging will be sent to the console when running in dev. When in production, all logs are combined into a single file and placed in 
+* App Logs: `build/logs/logs_{current_date_time}.log`.
+* CRON Jobs: `build/logs/cron_logs_{current_date_time}.log`
