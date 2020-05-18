@@ -47,6 +47,9 @@ The file `src/config/db_config.json` helps initialize a connection to MongoDB. T
 
 For additional information on getting started, take a look at the [Bot Users](https://api.slack.com/bot-users) setup guide and the [Events API](https://api.slack.com/events-api).
 
+## Testing
+Run `npm test` to execute the entire test suite.
+
 ## Running the app
 ### Development
 Run `npm run dev` to start the server in development mode. 
