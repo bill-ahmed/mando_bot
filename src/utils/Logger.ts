@@ -35,7 +35,7 @@ export default winston.createLogger({
 
 
 /** A logger for cron jobs. */
-export const CRONLogger = winston.createLogger({
+export const JobLogger = winston.createLogger({
     level: env === 'production' ? 'info' : 'debug',
     format: winston.format.combine(
         winston.format.timestamp(),

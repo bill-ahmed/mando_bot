@@ -1,16 +1,16 @@
-import CRONJob from "../cron/CRONJobClass";
-import { CRONLogger } from "../../utils/Logger";
+import BackgroundJob from "../cron/BackgroundJobClass";
+import { JobLogger } from "../../utils/Logger";
 import { GetAllChannels } from "../../api/web_api/conversations/conversations.api";
 import ChannelHelper from "../../models/Channel/Channel.helper";
 
-export default class ChannelUpdater extends CRONJob {
+export default class ChannelUpdater extends BackgroundJob {
     constructor() { super(); }
 
-    public static async perform(): Promise<void> {
-        CRONLogger.info("Starting refresh of list of channels.");
+    public async perform(): Promise<void> {
+        JobLogger.info("Starting refresh of list of channels.");
 
         let channel_data = await GetAllChannels();
-        CRONLogger.info(`Found ${channel_data.length} channel(s).`);
+        JobLogger.info(`Found ${channel_data.length} channel(s).`);
 
         channel_data.forEach(async channel => {
             let doc = { 
@@ -22,6 +22,6 @@ export default class ChannelUpdater extends CRONJob {
             await ChannelHelper.createOrUpdate(doc.channel_id, doc);
         });
 
-        CRONLogger.info("Finished updating list of channels");
+        JobLogger.info("Finished updating list of channels");
     }
 }
