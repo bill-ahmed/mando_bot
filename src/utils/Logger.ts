@@ -2,6 +2,7 @@ import winston, { createLogger, format, transports } from 'winston';
 const colorizer = winston.format.colorize();
 
 const env = process.env.NODE_ENV;
+const logRoot = `${__dirname}/../../logs/`;
 const logFile = `logs_${new Date().toISOString().replace(":", "_").replace(":", "_")}.log`
 const cronJobLogFile = `cron_logs_${new Date().toISOString().replace(":", "_").replace(":", "_")}.log`
 
@@ -16,7 +17,7 @@ export default winston.createLogger({
 	transports: env === 'production' ? [
 		new winston.transports.File(
             {
-                filename: `${__dirname}/../logs/${logFile}`, 
+                filename: `${logRoot}${logFile}`, 
                 level: 'info',
                 format: winston.format.combine(
                     winston.format.timestamp(),
@@ -44,7 +45,7 @@ export const CRONLogger = winston.createLogger({
 	transports: env === 'production' ? [
 		new winston.transports.File(
             {
-                filename: `${__dirname}/../logs/${cronJobLogFile}`, 
+                filename: `${logRoot}${cronJobLogFile}`, 
                 level: 'info',
                 format: winston.format.combine(
                     winston.format.timestamp(),

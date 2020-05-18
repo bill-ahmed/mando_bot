@@ -1,6 +1,8 @@
-# MandoBot <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot)
+# MandoBot.ts <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot)
 
-This bot was created as a template to get quickly started with a slack bot. Checkout below for more info.
+This was created as a template to get quickly started with a slack bot. It utilizes Express.js, [mongoose](https://github.com/Automattic/mongoose) & [typegoose](https://github.com/typegoose/typegoose/) to provide a low barrier of entry.
+
+Checkout below for more info.
 
 ## Setup
 
@@ -57,6 +59,8 @@ Run `npm run dev` to start the server in development mode.
 ### Production
 1. Build JS Bundle: `npm run build`
 2. Start server: `NODE_ENV=production node ./build/index.js`
+
+All build assets are located in `build/`.
 
 ## Additional Notes
 All logging will be sent to the console when running in dev. When in production, all logs are combined into a single file and placed in 

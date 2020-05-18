@@ -4,6 +4,7 @@
   "description": "A Slack bot :)",
   "main": "index.ts",
   "scripts": {
+    "start": "npm run dev",
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
