@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
-import { prop, plugin, buildSchema } from '@typegoose/typegoose';
+import { prop, plugin, buildSchema, arrayProp, Ref } from '@typegoose/typegoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import UserValidations from './User.validation';
+import { ChannelKlass } from '../Channel/Channel.model';
 
 /** Declare Types **/
 
@@ -32,6 +33,10 @@ class UserClass {
     @prop({ required: true, unique: true, uniqueCaseInsensitive: true })
     slack_id!: string;
 
+    @arrayProp({ ref: "Channel", default: [] })
+    //@ts-ignore TODO: figure out why typescript is complaining here :(
+    channels!: Ref<ChannelKlass>[]
+
 
     /*** DEFINE VIRTUALS ***/
 
@@ -49,4 +54,5 @@ UserSchema.path('slack_id').validate(UserValidations.validate_slack_id);
 
 /** A document representing a User. */
 const User = mongoose.model('User', UserSchema);
+export const UserKlass = UserClass;
 export default User;

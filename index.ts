@@ -3,9 +3,7 @@ import logger from './src/utils/Logger';
 import './src/initializers';
 import EventHandler from "./src/handlers/events/app_mentions/Events.handler";
 import RouteRequest from "./src/utils/Router";
-import User from './src/models/User/User.model';
 import AppConfig from "./src/utils/AppConfig";
-const config = require('./src/config/config.json');
 
 const app = express()
 const port = 3500;
@@ -44,6 +42,6 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(port, () => {
+app.listen(port, async () => {
 	logger.info(`Mando Bot listening on port ${port}!`);
 });
