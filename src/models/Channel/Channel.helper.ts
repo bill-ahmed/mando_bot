@@ -20,7 +20,7 @@ export default class ChannelHelper {
         }
 
         try {
-            if(channel) { await channel.save(); }
+            await channel?.save();
         } catch (error) {
             console.log(error);
         }

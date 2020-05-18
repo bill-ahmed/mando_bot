@@ -1,4 +1,4 @@
-import CRONJob from "../CRONJobClass";
+import CRONJob from "../cron/CRONJobClass";
 import { CRONLogger } from "../../utils/Logger";
 import { GetAllChannels } from "../../api/web_api/conversations/conversations.api";
 import ChannelHelper from "../../models/Channel/Channel.helper";
