@@ -1,6 +1,7 @@
 import { Response, Request } from 'express';
-import logger from '../../../utils/Logger';
+import Logger from '../../../utils/Logger';
 import ResponseHandler from '../../ResponseHandler';
+import Channel from '../../../models/Channel/Channel.model';
 
 export default class ChannelEventHandler {
     rh: ResponseHandler;
@@ -10,6 +11,15 @@ export default class ChannelEventHandler {
 
     /** For when the bot is kicked out of a channel */
     public async handleChannelLeft(req: Request, res: Response): Promise<void> {
-        logger.debug("Bot removed from channel...");
+        let channel_removed = req.body.event.channel;  // ID of the channel this bot was removed from
+        let channel;
+
+        // If the channel exists, continue with the removal
+        // the channel may not exists if bot is added & 
+        // removed before the CRON job makes its round
+        if(channel = await Channel.findOne({ channel_id: channel_removed }).exec()) {
+            channel.remove();
+            Logger.info(`Bot removed from channel ${channel}`);
+        }
     }
 }
