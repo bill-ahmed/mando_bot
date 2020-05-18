@@ -20,7 +20,7 @@ class ChannelClass {
     is_private!: boolean
 
     /** ID of the user that created this channel. */
-    @prop()
+    @prop({ default: "" })
     creator?: string;
 }
 

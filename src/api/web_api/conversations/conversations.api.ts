@@ -2,6 +2,9 @@ import request from 'request';
 import AppConfig from '../../../utils/AppConfig';
 import Logger from '../../../utils/Logger';
 
+/** Gets list of channels that this bot has access to. They can 
+ * be both public and private, but not personal messages.
+ */
 export async function GetAllChannels(): Promise<Conversation[]> {
     return new Promise((resolve, reject) => {
         const endpoint = AppConfig.endpoints.ALL_ACCESSIBLE_CHANNELS;
