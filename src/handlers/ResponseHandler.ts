@@ -4,9 +4,10 @@ import EventMessageAnalyzer from '../MessageAnalyzers/EventMessageAnalyzer';
 import * as Greetings from '../MessageResponses/AppMentions/Greetings';
 import { GetRandomInt } from '../utils/Helpers';
 import Logger from '../utils/Logger';
+import AppConfig from '../utils/AppConfig';
 
 const config = require('../config/config.json');
-const bot_token = config.slack.bot_oauth_token || process.env.MANDO_BOT_TOKEN;
+const bot_token = AppConfig.BOT_OAUTH_TOKEN;
 
 /**List of happy emojis */
 const HappyEmoji = Greetings.GreetingEmoji;
@@ -66,7 +67,7 @@ export default class ResponseHandler {
     public sendChatResponse(response: string, channel: string): Promise<any>{
         return new Promise((resolve, reject) => {
 
-            var endpoint = config.slack.messaging.chatMessage;
+            var endpoint = AppConfig.endpoints.CHAT_MESSAGE;
             var headers = {
                     'Authorization': "Bearer " + bot_token,
                     'Content-Type': 'application/json',

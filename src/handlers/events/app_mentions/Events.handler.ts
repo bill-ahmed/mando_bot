@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
-import logger from '../utils/Logger';
-import ResponseHandler from './ResponseHandler';
-const config = require('../config/config.json');
+import logger from '../../../utils/Logger';
+import ResponseHandler from '../../ResponseHandler';
+const config = require('../../../config/config.json');
 
 export default class EventHandler {
     rh: ResponseHandler;
@@ -17,15 +17,11 @@ export default class EventHandler {
 
         // Only consider messages that mention the bot, empty string if not so
         var message = this.getMessage(rawMessage);
-        logger.debug("Parsed Message: " + message);
 
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender, messageType);
         this.rh.sendChatResponse(response, channel)
-        .then(resp => {
-            logger.debug("Got response:")
-            logger.debug(JSON.stringify(resp));
-        });
+        .then(resp => { });
     }
 
     /**When setting up a slackbot, the request URL must be validated*/

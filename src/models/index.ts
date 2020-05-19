@@ -3,3 +3,4 @@
  * Their schema's will be built the first time
  */
 import './User/User.model';
+import './Channel/Channel.model';
