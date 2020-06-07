@@ -3,11 +3,11 @@ import Logger from '../utils/Logger';
 import * as config from '../config/db_config.json';
 
 /** Initialize connection to database */
-export default function main(): void {
+export default async function main(): Promise<void> {
     const url = config.mongo_db.url + config.mongo_db.database;
     const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
-    mongoose.connect(url, options);
+    await mongoose.connect(url, options);
 
     const db = mongoose.connection;
     db.on('error', errorCallback);

@@ -55,11 +55,10 @@ class JobManager {
 function main() {
     JobLogger.info("Booting cron jobs...");
     let job_manager = new JobManager();
-    new UserUpdater().perform();
 
     // Define schedules
     const CHANNEL_UPDATE_SCHEDULE = '*/5 * * * *';  // Run every 5 minutes
-    const USER_UPDATE_SCHEDULE = '*/2 * * * *';
+    const USER_UPDATE_SCHEDULE = '*/10 * * * *';    // Run every 10 minutes
 
     // Instantiate
     job_manager.schedule_job("UPDATE_LIST_OF_CHANNELS", CHANNEL_UPDATE_SCHEDULE, new ChannelUpdater());
