@@ -1,15 +1,13 @@
 import { Response, Request } from 'express';
 import logger from '../../../utils/Logger';
 import ResponseHandler from '../../ResponseHandler';
+import EventHandler from '../Event.handler';
 const config = require('../../../config/config.json');
 
-export default class EventHandler {
-    rh: ResponseHandler;
-    constructor() {
-        this.rh = new ResponseHandler();
-    }
+export default class AppMentionHandler extends EventHandler {
+    constructor() { super(); }
 
-    public async appMention(req: Request, res: any): Promise<any>{
+    public async handleEvent(req: Request, res: any): Promise<any>{
         var rawMessage = req.body.event.text    as string;
         var sender = req.body.event.user        as string;
         var channel = req.body.event.channel    as string;
@@ -22,12 +20,6 @@ export default class EventHandler {
         var response = this.rh.getResponseByMessage(message, sender, messageType);
         this.rh.sendChatResponse(response, channel)
         .then(resp => { });
-    }
-
-    /**When setting up a slackbot, the request URL must be validated*/
-    public async validateRequestURL(req: Request, res: Response): Promise<any>{
-        res.send(req.body.challenge);
-        logger.info("Verified request URL, token: " + req.body.token);
     }
 
     /**Get the tag representing this bot's id in message mentions for a workspace. E.g. id "ABCDE" would yield "<@ABCDE>" 

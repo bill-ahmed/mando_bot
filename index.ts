@@ -1,9 +1,9 @@
 import express from "express";
 import logger from './src/utils/Logger';
 import './src/initializers';
-import EventHandler from "./src/handlers/events/app_mentions/Events.handler";
 import RouteRequest from "./src/utils/Router";
 import AppConfig from "./src/utils/AppConfig";
+import EventHandler from "./src/handlers/events/Event.handler";
 
 const app = express()
 const port = 3500;
