@@ -1,4 +1,4 @@
-import BackgroundJob from "../cron/BackgroundJobClass";
+import BackgroundJob from "../_cron/BackgroundJobClass";
 import { JobLogger } from "../../utils/Logger";
 import { GetAllChannels } from "../../api/web_api/conversations/conversations.api";
 import ChannelHelper from "../../models/Channel/Channel.helper";
