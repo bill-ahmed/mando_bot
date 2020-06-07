@@ -96,4 +96,64 @@ export default class ResponseHandler {
             });
         });
     }
+
+    /** Send a get request to slack
+     * @param endpoint The URL to access
+     * @param options Additional options such as body, headers. If no header is
+     * provided, the default will be used to send bot token and content type of application/json
+     */
+    public sendGET(endpoint: string, options?: { body?: any, headers?: any, json?: boolean }): Promise<any> {
+        return new Promise((resolve, reject) => {
+            var headers = options?.headers ?? {
+                'Authorization': "Bearer " + bot_token,
+                'Content-Type': 'application/json',
+            }
+
+            request.get({
+                url: endpoint,
+                method: 'GET',
+                json: options?.json ?? true,
+                body: options?.body,
+                headers: headers
+            }, (error: any, resp: any, body: any) => {
+                if (error) {
+                    logger.error("Error sending a chat response.");
+                    logger.error(error);
+                    reject(error);
+                } else {
+                    resolve(resp);
+                }
+            });
+        });
+    }
+
+    /** Send a post request to slack
+     * @param endpoint The URL to access
+     * @param options Additional options such as body, headers. If no header is
+     * provided, the default will be used to send bot token and content type of application/json
+     */
+    public sendPOST(endpoint: string, options?: { body?: any, headers?: any, json?: boolean }): Promise<any> {
+        return new Promise((resolve, reject) => {
+            var headers = options?.headers ?? {
+                'Authorization': "Bearer " + bot_token,
+                'Content-Type': 'application/json',
+            }
+
+            request.post({
+                url: endpoint,
+                method: 'POST',
+                json: options?.json ?? true,
+                body: options?.body,
+                headers: headers
+            }, (error: any, resp: any, body: any) => {
+                if (error) {
+                    logger.error("Error sending a chat response.");
+                    logger.error(error);
+                    reject(error);
+                } else {
+                    resolve(resp);
+                }
+            });
+        });
+    }
 }
