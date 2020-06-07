@@ -24,11 +24,8 @@ class UserClass {
     @prop({ required: true, enum: ['Male', 'Female', 'Other', 'Unknown'] })
     gender!: Gender;
 
-    @prop({ required: true })
-    date_of_birth!: Date;
-
-    @prop({ required: true, unique: true, uniqueCaseInsensitive: true }) // 'unique' is NOT a validator! https://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator
-    email!: string;
+    @prop({ unique: true, uniqueCaseInsensitive: true }) // 'unique' is NOT a validator! https://mongoosejs.com/docs/validation.html#the-unique-option-is-not-a-validator
+    email?: string;
 
     @prop({ required: true, unique: true, uniqueCaseInsensitive: true })
     slack_id!: string;

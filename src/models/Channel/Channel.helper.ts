@@ -1,4 +1,5 @@
 import Channel from "./Channel.model";
+import Logger from "../../utils/Logger";
 
 export default class ChannelHelper {
     constructor() { /** Empty */ }
@@ -22,7 +23,7 @@ export default class ChannelHelper {
         try {
             await channel?.save();
         } catch (error) {
-            console.log(error);
+            Logger.error(error);
         }
     }
 }
