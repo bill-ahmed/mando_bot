@@ -29,7 +29,8 @@ const view_blocks = {
 					"emoji": true
 				},
 				"value": "click_me",
-				"url": "https://app.slack.com/block-kit-builder"
+				"url": "https://app.slack.com/block-kit-builder",
+				"style": "primary"
 			}
 		},
 		{

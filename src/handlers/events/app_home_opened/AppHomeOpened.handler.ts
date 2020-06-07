@@ -1,6 +1,5 @@
-import { Response, Request } from 'express';
+import { Request } from 'express';
 import logger from '../../../utils/Logger';
-import ResponseHandler from '../../ResponseHandler';
 import EventHandler from '../Event.handler';
 import APP_HOME_VIEW from '../../../views/app_home/index.view';
 import AppConfig from '../../../utils/AppConfig';
@@ -17,6 +16,5 @@ export default class AppHomeOpenedHandler extends EventHandler {
             view: APP_HOME_VIEW
         }
         await this.rh.sendPOST(AppConfig.endpoints.views.publish, { body: body });
-        logger.debug(`Sent view to user ${user}`)
     }
 }

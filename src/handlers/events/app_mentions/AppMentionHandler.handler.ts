@@ -1,6 +1,5 @@
-import { Response, Request } from 'express';
+import { Request } from 'express';
 import logger from '../../../utils/Logger';
-import ResponseHandler from '../../ResponseHandler';
 import EventHandler from '../Event.handler';
 const config = require('../../../config/config.json');
 
@@ -18,8 +17,7 @@ export default class AppMentionHandler extends EventHandler {
 
         // Build response based on message
         var response = this.rh.getResponseByMessage(message, sender, messageType);
-        this.rh.sendChatResponse(response, channel)
-        .then(resp => { });
+        await this.rh.sendChatResponse(response, channel);
     }
 
     /**Get the tag representing this bot's id in message mentions for a workspace. E.g. id "ABCDE" would yield "<@ABCDE>" 
