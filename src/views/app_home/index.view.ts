@@ -1,4 +1,16 @@
-const APP_HOME_VIEW = {
+/** Information regarding where this block is used.
+ * For more info: https://api.slack.com/reference/surfaces/views
+ */
+const _meta = {
+	"type": "home",
+	"title": {
+		"type": "plain_text",
+		"text": "GENERIC TITLE"
+	}
+}
+
+/** View to render */
+const view_blocks = {
 	"blocks": [
 		{
 			"type": "divider"
@@ -46,6 +58,11 @@ const APP_HOME_VIEW = {
 			"type": "divider"
 		}
 	]
+}
+
+const APP_HOME_VIEW = {
+	..._meta,
+	...view_blocks
 }
 
 export default APP_HOME_VIEW;

@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 /** 
  * INITIALIZE APPLICATION  
  **/
-
+//@ts-ignore -- Need instance of generic event handler in order to validate incoming requests for now.
 const ev = new EventHandler();
 
 /**Validate all incoming requests before continuing */
