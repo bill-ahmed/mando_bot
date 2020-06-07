@@ -13,5 +13,10 @@ before_script:
   - sleep 15
   - mongo mydb_test --eval 'db.createUser({user:"admin",pwd:"password",roles:["readWrite"]});'
 
+script:
+  - npm ci
+  - npm test
+  - npm run build
+
 services:
   - mongodb
