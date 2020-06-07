@@ -1,1 +1,1 @@
-import './cron';
+import './_cron';
