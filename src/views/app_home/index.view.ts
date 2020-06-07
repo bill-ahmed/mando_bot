@@ -28,7 +28,8 @@ const view_blocks = {
 					"text": "Open Builder",
 					"emoji": true
 				},
-				"value": "https://app.slack.com/block-kit-builder."
+				"value": "click_me",
+				"url": "https://app.slack.com/block-kit-builder"
 			}
 		},
 		{
