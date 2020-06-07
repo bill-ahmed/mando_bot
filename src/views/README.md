@@ -1,0 +1,2 @@
+# Slack Block Kits
+Access all block kits for the app here. For more information, checkout the [block kit guide](https://api.slack.com/block-kit). You can also open the builder [here](https://app.slack.com/block-kit-builde).

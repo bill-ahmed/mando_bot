@@ -16,7 +16,16 @@ export default class AppConfig {
         /** Get list of all channels that this bot has access to. 
          * @type GET
         */
-        ALL_ACCESSIBLE_CHANNELS: config.slack.webAPI.conversations.user_accessible_channels as string
+        ALL_ACCESSIBLE_CHANNELS: config.slack.webAPI.conversations.user_accessible_channels as string,
+
+        views: {
+            /** To publish a view
+             * @type POST
+             * @requires user_id
+             * @requires view
+             */
+            publish:  config.slack.webAPI.views.publish.url
+        }
     };
 
     /** Singleton */

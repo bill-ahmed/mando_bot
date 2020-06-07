@@ -1,12 +1,12 @@
 import express from "express";
 import logger from './src/utils/Logger';
 import './src/initializers';
-import EventHandler from "./src/handlers/events/app_mentions/Events.handler";
 import RouteRequest from "./src/utils/Router";
 import AppConfig from "./src/utils/AppConfig";
+import EventHandler from "./src/handlers/events/Event.handler";
 
 const app = express()
-const port = 3500;
+const PORT = process.env.PORT || 3500;
 
 const ALLOW_TOKEN = AppConfig.VERIFICATION_TOKEN;
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 /** 
  * INITIALIZE APPLICATION  
  **/
-
+//@ts-ignore -- Need instance of generic event handler in order to validate incoming requests for now.
 const ev = new EventHandler();
 
 /**Validate all incoming requests before continuing */
@@ -42,6 +42,6 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(port, async () => {
-	logger.info(`Mando Bot listening on port ${port}!`);
+app.listen(PORT, async () => {
+	logger.info(`Mando Bot listening on port ${PORT}!`);
 });
