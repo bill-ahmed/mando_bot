@@ -6,7 +6,7 @@ import AppConfig from "./src/utils/AppConfig";
 import EventHandler from "./src/handlers/events/Event.handler";
 
 const app = express()
-const port = 3500;
+const PORT = process.env.PORT || 3500;
 
 const ALLOW_TOKEN = AppConfig.VERIFICATION_TOKEN;
 
@@ -42,6 +42,6 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(port, async () => {
-	logger.info(`Mando Bot listening on port ${port}!`);
+app.listen(PORT, async () => {
+	logger.info(`Mando Bot listening on port ${PORT}!`);
 });
