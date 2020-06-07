@@ -2,6 +2,7 @@ import cron from 'node-cron';
 import ChannelUpdater from '../channel_updater/UpdateChannels';
 import { JobLogger } from '../../utils/Logger';
 import CRONJob, { InvalidScheduleError, JobAlreadyExistsError, JobNotFoundError } from './BackgroundJobClass';
+import UserUpdater from '../user_updater/UpdateUsers';
 
 interface ScheduledJob { id: string, task: cron.ScheduledTask }
 
@@ -57,9 +58,11 @@ function main() {
 
     // Define schedules
     const CHANNEL_UPDATE_SCHEDULE = '*/5 * * * *';  // Run every 5 minutes
+    const USER_UPDATE_SCHEDULE = '*/10 * * * *';    // Run every 10 minutes
 
     // Instantiate
     job_manager.schedule_job("UPDATE_LIST_OF_CHANNELS", CHANNEL_UPDATE_SCHEDULE, new ChannelUpdater());
+    job_manager.schedule_job('UPDATE_LIST_OF_ALL_USERS', USER_UPDATE_SCHEDULE, new UserUpdater());
 }
 
 main();

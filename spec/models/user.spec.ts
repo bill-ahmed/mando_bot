@@ -10,6 +10,11 @@ describe('User model', () => {
         done();
     })
 
+    afterEach( async (done) => {
+        await User.deleteMany({slack_id: test_user_slack_id}).exec();;
+        done();
+    })
+
     it("should be able to create a User in db", async (done) => {
         let user = new User({
             first_name: "test",

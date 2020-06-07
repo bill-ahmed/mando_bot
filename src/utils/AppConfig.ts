@@ -18,6 +18,11 @@ export default class AppConfig {
         */
         ALL_ACCESSIBLE_CHANNELS: config.slack.webAPI.conversations.user_accessible_channels as string,
 
+        /** Get list of all users that exist in the workspace
+         * @type GET
+         */
+        ALL_USERS_LIST: config.slack.webAPI.users.users_list,
+
         views: {
             /** To publish a view
              * @type POST
