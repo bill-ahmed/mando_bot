@@ -1,0 +1,18 @@
+version: "3.8" # https://docs.docker.com/compose/compose-file/
+services:
+  app:
+    container_name: mando_bot
+    restart: always
+    env_file: ./config.env
+    build: ./
+    ports:
+      - "4500:4500"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"

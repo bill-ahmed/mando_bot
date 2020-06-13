@@ -115,3 +115,5 @@ build/src/db_config.json
 logs
 
 .vscode
+
+data

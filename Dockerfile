@@ -1,6 +1,8 @@
 #Node LTS 12
 FROM node:12
 
+RUN mkdir -p /usr/mando_bot/src
+
 # Set working dir
 WORKDIR /usr/mando_bot/src
 
@@ -8,7 +10,7 @@ WORKDIR /usr/mando_bot/src
 COPY package*.json ./
 
 # Get dependencies
-RUN npm ci --only=production
+RUN npm ci --production --silent
 
 # Need specific port enabled
 EXPOSE 4500
@@ -16,8 +18,5 @@ EXPOSE 4500
 # Bundle app source
 COPY . .
 
-# Build app source
-RUN npm run build
-
 # Start the server
-CMD [ "NODE_ENV=production", "node", "./build/index.js" ]
+CMD [ "node", "./build/index.js" ]
