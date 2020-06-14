@@ -1,4 +1,2 @@
 sut:
-    build: 
-        context: .
-        dockerfile: Dockerfile.test
+    build: ./Dockerfile.test
