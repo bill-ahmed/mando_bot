@@ -2,8 +2,10 @@ version: "3.8" # https://docs.docker.com/compose/compose-file/
 services:
   app:
     container_name: mando_bot
-    restart: always
-    env_file: ./config.env
+    restart: unless-stopped
+    environment:
+      - NODE_ENV="production"
+      - PORT="4500"
     build: ./
     ports:
       - "4500:4500"
@@ -12,6 +14,7 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    restart: unless-stopped
     volumes:
       - ./data:/data/db
     ports:
