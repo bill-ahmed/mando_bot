@@ -1,2 +1,2 @@
-docker-compose build
-docker-compose up
+# Build & start MandoBot stack
+docker-compose up -d --build
