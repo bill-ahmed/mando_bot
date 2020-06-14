@@ -6,7 +6,8 @@ import AppConfig from "./src/utils/AppConfig";
 import EventHandler from "./src/handlers/events/Event.handler";
 
 const app = express()
-const PORT = process.env.PORT || 3500;
+const PORT = (process.env.PORT || 3500) as number;
+const BINDING = process.env.SERVER_BINDING || "127.0.0.1";
 
 const ALLOW_TOKEN = AppConfig.VERIFICATION_TOKEN;
 
@@ -42,6 +43,7 @@ app.post('*', (req, res) => {
 	}
 });
 
-app.listen(PORT, async () => {
+app.listen(PORT, BINDING, async () => {
 	logger.info(`Mando Bot listening on port ${PORT}!`);
+	logger.info(`Listening on binding URL: ${BINDING}.`)
 });

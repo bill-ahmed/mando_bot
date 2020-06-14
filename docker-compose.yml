@@ -6,7 +6,8 @@ services:
     environment:
       - NODE_ENV="production"
       - PORT="4500"
-      - MONGO_CONNECTION_URI="mongodb://mongodb:27017/"
+      - SERVER_BINDING="0.0.0.0"                          # For express.js, listen to all
+      - MONGO_CONNECTION_URI="mongodb://mongodb:27017/"   # Connection URL must match name of mongo container
     build: ./
     ports:
       - "4500:4500"
