@@ -6,6 +6,8 @@ import * as config from '../config/db_config.json';
 export default async function main(): Promise<void> {
     const url = config.mongo_db.url + config.mongo_db.database;
     const options = { useNewUrlParser: true, useUnifiedTopology: true };
+    
+    Logger.info("Connecting to db...");
 
     await mongoose.connect(url, options);
 
