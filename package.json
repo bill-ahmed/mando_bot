@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
+    "test_build": "jasmine-ts \"build/spec/**/*.spec.js\"",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
     "build": "tsc && cp -r src/config/ ./build/src"

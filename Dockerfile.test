@@ -18,11 +18,5 @@ COPY . .
 # Build JS bundle
 RUN npm run build
 
-# Copy all recorded dependencies
-COPY package*.json ./build
-
-# Go to builds folder
-WORKDIR /usr/mando_bot/build
-
 # Run all tests
-RUN npm test
+CMD ["npm", "run", "test_build"]
