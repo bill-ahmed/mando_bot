@@ -2,20 +2,23 @@ version: "3.8" # https://docs.docker.com/compose/compose-file/
 services:
   app:
     container_name: mando_bot
-    restart: unless-stopped
+    restart: always
     environment:
       - NODE_ENV="production"
       - PORT="4500"
+      - MONGO_CONNECTION_URI="mongodb://mongodb:27017/"
     build: ./
     ports:
       - "4500:4500"
     links:
       - mongo
   mongo:
-    container_name: mongo
-    image: mongo
-    restart: unless-stopped
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
     volumes:
-      - ./data:/data/db
+      - mongodata:/data/db
     ports:
       - "27017:27017"
+volumes:
+  mongodata:
