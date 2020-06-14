@@ -5,15 +5,12 @@ services:
     restart: always
     environment:
       - NODE_ENV="production"
-      - PORT="3500"
-      - SERVER_BINDING="0.0.0.0"                          # For express.js, listen to all
+      - PORT=3500
+      - SERVER_BINDING=0.0.0.0                          # For express.js, listen to all
       - MONGO_CONNECTION_URI="mongodb://mongodb:27017/"   # Connection URL must match name of mongo container
     build: ./
     ports:
-      - target: 3500
-        published: 3500
-        protocol: tcp
-        mode: host
+      - 3500:3500
     links:
       - mongo
     depends_on:
