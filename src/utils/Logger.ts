@@ -50,7 +50,7 @@ export const JobLogger = winston.createLogger({
                 format: winston.format.combine(
                     winston.format.timestamp(),
                     winston.format.simple(),
-                    winston.format.printf(msg => `[${msg.timestamp}] ${msg.level.toUpperCase()}: ${msg.message}`)
+                    winston.format.printf(msg => `[${msg.timestamp}] CRON-${msg.level.toUpperCase()}: ${msg.message}`)
                     ),
             }
         ),

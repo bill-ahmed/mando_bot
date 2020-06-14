@@ -6,6 +6,9 @@ import ChannelHelper from "../../models/Channel/Channel.helper";
 export default class ChannelUpdater extends BackgroundJob {
     constructor() { super(); }
 
+    /** Update list of all available channels
+     * @override
+     */
     public async perform(): Promise<void> {
         JobLogger.info("Starting refresh of list of channels.");
 

@@ -6,6 +6,9 @@ import UserHelper from "../../models/User/User.helper";
 export default class UserUpdater extends BackgroundJob {
     constructor() { super(); }
 
+    /** Update list of all users
+     * @override
+     */
     public async perform(): Promise<void> {
         JobLogger.info("Starting update of all users.");
         let users = (await GetListOfAllUsers() as any[]).filter(user => { return !user.is_bot });
