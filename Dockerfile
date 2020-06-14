@@ -13,7 +13,7 @@ COPY package*.json ./
 RUN npm ci --production --silent
 
 # Need specific port enabled
-EXPOSE 4500
+EXPOSE 3500
 
 # Bundle app source
 COPY . .
