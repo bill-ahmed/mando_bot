@@ -4,16 +4,13 @@ import * as config from '../config/db_config.json';
 
 /** Initialize connection to database */
 export default async function main(): Promise<void> {
-    const url = config.mongo_db.url + config.mongo_db.database;
+    const url = (process.env.MONGO_CONNECTION_URI || config.mongo_db.url) + config.mongo_db.database;
     const options = { useNewUrlParser: true, useUnifiedTopology: true };
     
     Logger.info("Connecting to db...");
 
     await mongoose.connect(url, options);
-
-    const db = mongoose.connection;
-    db.on('error', errorCallback);
-    db.once('open', successCallback);
+    Logger.info("Connected to db!");
 }
 
 /** If connection to db is not possible due to error. */
