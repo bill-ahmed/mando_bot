@@ -1,0 +1,28 @@
+#Node LTS 12
+FROM node:12
+
+RUN mkdir -p /usr/mando_bot/src
+
+# Set working dir
+WORKDIR /usr/mando_bot/src
+
+# Copy all recorded dependencies
+COPY package*.json ./
+
+# Clean install all dependencies
+RUN npm ci
+
+# Copy all source contents -- will build the js bundle later
+COPY . .
+
+# Build JS bundle
+RUN npm run build
+
+# Copy all recorded dependencies
+COPY package*.json ./build
+
+# Go to builds folder
+WORKDIR /usr/mando_bot/build
+
+# Run all tests
+RUN npm test
