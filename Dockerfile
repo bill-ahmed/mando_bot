@@ -16,7 +16,7 @@ RUN npm ci --production --silent
 EXPOSE 3500
 
 # Bundle app source
-COPY . .
+COPY ./build/ .
 
 # Start the server
-CMD [ "node", "./build/index.js" ]
+CMD [ "node", "index.js" ]

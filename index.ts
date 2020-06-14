@@ -10,7 +10,7 @@ const PORT = (process.env.PORT || 3500) as number;
 const HOST = process.env.SERVER_BINDING || "127.0.0.1";
 
 const ALLOW_TOKEN = AppConfig.VERIFICATION_TOKEN;
-logger.debug(`Using verification token ${ALLOW_TOKEN}`)
+logger.info(`Using verification token ${ALLOW_TOKEN}`)
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
