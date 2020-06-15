@@ -1,0 +1,27 @@
+version: "3.8" # https://docs.docker.com/compose/compose-file/
+services:
+  app:
+    container_name: mando_bot
+    restart: always
+    env_file: 
+      - config.env
+      - secrets.env
+    environment:
+      - MONGO_CONNECTION_URI="mongodb://mongodb:27017/"   # Connection URL must match name of mongo container
+    build: ./
+    ports:
+      - 3500:3500
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27018:27017"
+volumes:
+  mongodata:

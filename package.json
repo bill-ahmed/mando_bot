@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "test": "jasmine-ts \"spec/**/*.spec.ts\"",
+    "test_build": "jasmine-ts \"build/spec/**/*.spec.js\"",
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly index.ts",
     "build": "tsc && cp -r src/config/ ./build/src"
@@ -18,7 +19,8 @@
     "mongoose-unique-validator": "^2.0.3",
     "node-cron": "^2.0.3",
     "request": "^2.88.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
