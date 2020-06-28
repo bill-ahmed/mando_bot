@@ -14,13 +14,14 @@
   "author": "Bilal Ahmed",
   "license": "ISC",
   "dependencies": {
+    "@speee-js/jsx-slack": "^2.2.0",
     "@typegoose/typegoose": "^7.0.0",
+    "express": "^4.17.1",
     "mongoose": "^5.9.10",
     "mongoose-unique-validator": "^2.0.3",
     "node-cron": "^2.0.3",
     "request": "^2.88.0",
-    "winston": "^3.2.1",
-    "express": "^4.17.1"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
