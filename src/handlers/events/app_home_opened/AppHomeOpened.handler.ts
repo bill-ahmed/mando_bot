@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import logger from '../../../utils/Logger';
 import EventHandler from '../Event.handler';
-import APP_HOME_VIEW from '../../../views/app_home/index.view';
+import HomeTab from '../../../views/app_home/index.view';
 import AppConfig from '../../../utils/AppConfig';
 
 export default class AppHomeOpenedHandler extends EventHandler {
@@ -13,7 +13,7 @@ export default class AppHomeOpenedHandler extends EventHandler {
         let user = req.body.event.user
         let body = {
             user_id: user,
-            view: APP_HOME_VIEW
+            view: HomeTab()
         }
         await this.rh.sendPOST(AppConfig.endpoints.views.publish, { body: body });
     }
