@@ -1,4 +1,4 @@
-# MandoBot.ts <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot)
+# MandoBot.ts <br/>[![Build Status](https://travis-ci.org/bill-ahmed/mando_bot.svg?branch=master)](https://travis-ci.org/bill-ahmed/mando_bot) ![Docker Test & Build](https://github.com/bill-ahmed/mando_bot/workflows/Docker%20Test%20&%20Build/badge.svg)
 
 This was created as a template to get quickly started with a slack bot. It utilizes Express.js, [mongoose](https://github.com/Automattic/mongoose) & [typegoose](https://github.com/typegoose/typegoose/) to provide a low barrier of entry.
 
